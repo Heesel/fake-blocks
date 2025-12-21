@@ -21,6 +21,7 @@ public class FakeBlocksCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(Blocks.DIRT))
                     .title(Component.translatable("creativetab.fakeblocks.menu"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(FBItemRegisterer.NO_COLLISION_DUST.get());
                         FBBlockRegisterer.FAKE_BLOCKS.forEach((name, pair) -> {
                             DeferredBlock<?> block = pair.getLeft();
                             output.accept(block.get().asItem());

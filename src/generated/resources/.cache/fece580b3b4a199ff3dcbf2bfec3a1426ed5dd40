@@ -1,7 +1,17 @@
-// 1.21.1	2025-04-18T17:47:40.2321669	Item Models: fakeblocks
+// 1.21.1	2025-12-21T13:02:32.6338637	Item Models: fakeblocks
+6764e2e3b5bb5c516a67c459bf635062a6e2f125 assets/fakeblocks/models/item/fake_andesite.json
 5d16c5630c09e84d4324fb09f4d410639f54a8ea assets/fakeblocks/models/item/fake_cobblestone.json
+0ba0c5992fe74351e12cd6b4edad06b81a35b021 assets/fakeblocks/models/item/fake_diamond_block.json
+2b8f17b2111f765a81ad6e3bd04645397945e173 assets/fakeblocks/models/item/fake_diorite.json
 c4007f7e3bc7e5dfd3cb9d3999835bd4b597fc28 assets/fakeblocks/models/item/fake_dirt.json
+7bf1687d75fc0baffb58831b2d638d0555104056 assets/fakeblocks/models/item/fake_emerald_block.json
+b3c7ac87f735c9813d09ee46f1d26c844c06353c assets/fakeblocks/models/item/fake_gold_block.json
+7ef6d0ff66833448bd3a6088067aaefc647f944f assets/fakeblocks/models/item/fake_granite.json
 bbd15cd1634de5cce6760b9eddde9feb613dda76 assets/fakeblocks/models/item/fake_grass_block.json
+c6e080a1706f251ee859af248d69f6a3b4c34dc3 assets/fakeblocks/models/item/fake_gravel.json
+ba39b29649513e358f4f68a16a893ca8b7558c87 assets/fakeblocks/models/item/fake_iron_block.json
+5bae8738e5251f126c4b039a1dcc1ffd8a78e5d3 assets/fakeblocks/models/item/fake_netherite_block.json
+307a24518b9b22d2285e2c1727c429d65a73eb53 assets/fakeblocks/models/item/fake_netherrack.json
 b8509740b4ae3573901b20d4ca0b9fd9298b9e3f assets/fakeblocks/models/item/fake_obsidian.json
+976371ded304bf028cd5462a3568320aedc8085c assets/fakeblocks/models/item/fake_sand.json
 fb63fdeef603a7edf02010fc963c89e2d41931b6 assets/fakeblocks/models/item/fake_stone.json
-7ef6d0ff66833448bd3a6088067aaefc647f944f assets/fakeblocks/models/item/granite.json

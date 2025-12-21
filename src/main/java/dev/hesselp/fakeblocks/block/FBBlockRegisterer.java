@@ -20,11 +20,6 @@ public class FBBlockRegisterer {
             DeferredRegister.createBlocks(FakeBlocks.MODID);
     public static final Map<String, Pair<DeferredBlock<Block>, BlockTextureData>> FAKE_BLOCKS = new HashMap<>();
 
-    // Register blocks by name and base block
-    public static void initFakeBlocks() {
-        FakeBlockDefenitions.registerAll();
-    }
-
     public static void registerFakeBlock(String name, Block baseBlock, BlockTextureData textureData) {
         DeferredBlock<Block> fakeBlock = registerBlock(name, () ->
                 new Block(BlockBehaviour.Properties.ofFullCopy(baseBlock).noCollission()));
@@ -42,6 +37,6 @@ public class FBBlockRegisterer {
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
-        initFakeBlocks();
+        FakeBlockDefinitions.registerAll();
     }
 }

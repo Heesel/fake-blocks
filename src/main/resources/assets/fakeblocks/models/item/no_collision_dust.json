@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "fakeblocks:item/no_collision_dust"
+  }
+}

@@ -5,6 +5,7 @@ import dev.hesselp.fakeblocks.block.FBBlockRegisterer;
 import dev.hesselp.fakeblocks.block.BlockTextureData;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -22,14 +23,28 @@ public class FBBlockStateProvider extends BlockStateProvider {
 
             switch(textureData.getModelType()) {
                 case CUBE:
-                    simpleBlockWithItem(block.get(), models().cube(name,
-                            resourceLocation(textureData.getTextures().get("down")),
-                            resourceLocation(textureData.getTextures().get("up")),
-                            resourceLocation(textureData.getTextures().get("north")),
-                            resourceLocation(textureData.getTextures().get("south")),
-                            resourceLocation(textureData.getTextures().get("west")),
-                            resourceLocation(textureData.getTextures().get("east"))
-                            ));
+                    BlockModelBuilder model = models().withExistingParent(name, "block/cube")
+                            .texture("down", resourceLocation(textureData.getTextures().get("down")))
+                            .texture("up", resourceLocation(textureData.getTextures().get("up")))
+                            .texture("north", resourceLocation(textureData.getTextures().get("north")))
+                            .texture("south", resourceLocation(textureData.getTextures().get("south")))
+                            .texture("west", resourceLocation(textureData.getTextures().get("west")))
+                            .texture("east", resourceLocation(textureData.getTextures().get("east")));
+                    String particlePath = textureData.getTextures().getOrDefault("particle", textureData.getTextures().get("all"));
+                    if (particlePath != null) {
+                        model.texture("particle", resourceLocation(particlePath));
+                    }
+                    model.element().from(0,0,0).to(16,16,16)
+                            .allFaces((dir, faceBuilder) -> {
+                                String textureKey = dir.getName(); // "up", "north", etc.
+                                faceBuilder.texture("#" + textureKey);
+
+                                if(textureData.getTintedFaces().containsKey(dir)) {
+                                    faceBuilder.tintindex(textureData.getTintedFaces().get(dir));
+                                }
+                            });
+
+                    simpleBlockWithItem(block.get(), model);
                     break;
                 case CUBE_ALL:
                     simpleBlockWithItem(block.get(), models().cubeAll(name, resourceLocation(textureData.getTextures().get("all"))));
@@ -56,10 +71,6 @@ public class FBBlockStateProvider extends BlockStateProvider {
                     throw new IllegalStateException("Unexpected value: " + textureData.getModelType());
             }
         });
-//        FBBlockRegisterer.FAKE_BLOCKS.forEach((name, block) -> {
-//            String baseName = name.replace("fake_", "");
-//            block(block, baseName);
-//        });
     }
 
     private ResourceLocation resourceLocation (String path) {

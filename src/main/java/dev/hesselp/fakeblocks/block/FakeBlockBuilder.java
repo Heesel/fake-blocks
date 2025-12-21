@@ -1,17 +1,17 @@
 package dev.hesselp.fakeblocks.block;
 
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FakeBlockBuilder {
     private String name;
     private Block baseBlock;
     private BlockTextureData.ModelType modelType;
     private final Map<String, String> textures = new HashMap<>();
-//    private boolean tinted = false;
-//    private BlockColorFunction colorFunction = (i, w, p) -> -1;
+    private final Map<Direction, Integer> faceTints = new HashMap<>();
+
 
     public FakeBlockBuilder name(String name) {
         this.name = name;
@@ -33,6 +33,23 @@ public class FakeBlockBuilder {
         return this;
     }
 
+    public FakeBlockBuilder tintFace(Direction dir, int tintIndex) {
+        faceTints.put(dir, tintIndex);
+        return this;
+    }
+
+    public FakeBlockBuilder tintFaces(int tintIndex, Direction... dirs) {
+        for (Direction dir : dirs) {
+            faceTints.put(dir, tintIndex);
+        }
+        return this;
+    }
+
+    public Map<Direction, Integer> getFaceTints() {
+        return Collections.unmodifiableMap(faceTints);
+    }
+
+
     public void register() {
         FBBlockRegisterer.registerFakeBlock(
                 name,
@@ -40,7 +57,9 @@ public class FakeBlockBuilder {
                 new BlockTextureData(
                         name.replace("fake_", ""),
                         modelType,
-                        textures
+                        textures,
+                        baseBlock,
+                        faceTints
                 )
         );
     }
