@@ -11,6 +11,8 @@ public class FakeBlockBuilder {
     private BlockTextureData.ModelType modelType;
     private final Map<String, String> textures = new HashMap<>();
     private final Map<Direction, Integer> faceTints = new HashMap<>();
+    private final Map<Direction, float[]> faceUvs = new HashMap<>(); // [u1, v1, u2, v2]
+
 
 
     public FakeBlockBuilder name(String name) {
@@ -49,6 +51,11 @@ public class FakeBlockBuilder {
         return Collections.unmodifiableMap(faceTints);
     }
 
+    public FakeBlockBuilder uv(Direction dir, float u1, float v1, float u2, float v2) {
+        faceUvs.put(dir, new float[] { u1, v1, u2, v2 });
+        return this;
+    }
+
 
     public void register() {
         FBBlockRegisterer.registerFakeBlock(
@@ -59,7 +66,8 @@ public class FakeBlockBuilder {
                         modelType,
                         textures,
                         baseBlock,
-                        faceTints
+                        faceTints,
+                        faceUvs
                 )
         );
     }

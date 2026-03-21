@@ -18,5 +18,7 @@
   "block.fakeblocks.fake_diamond_block": "Fake Diamond Block",
   "block.fakeblocks.fake_emerald_block": "Fake Emerald Block",
   "block.fakeblocks.fake_netherite_block": "Fake Netherite Block",
-  "block.fakeblocks.fake_cobblestone": "Fake Cobblestone"
+  "block.fakeblocks.fake_cobblestone": "Fake Cobblestone",
+  "block.fakeblocks.fake_stone_bricks": "Fake Stone Bricks",
+  "block.fakeblocks.fake_bedrock": "Fake Bedrock"
 }

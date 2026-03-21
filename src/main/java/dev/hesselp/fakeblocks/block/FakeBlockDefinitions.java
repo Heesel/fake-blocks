@@ -71,7 +71,16 @@ public class FakeBlockDefinitions {
                 .texture("south", "block/grass_block_side")
                 .texture("west", "block/grass_block_side")
                 .texture("east", "block/grass_block_side")
+                .texture("particle", "block/dirt")
+                .texture("overlay", "block/grass_block_side_overlay")
+                .texture("side", "block/grass_block_side")
                 .tintFace(Direction.UP, 0)
+                .uv(Direction.UP,    0f, 0f, 16f, 16f)
+                .uv(Direction.DOWN,  0f, 0f, 16f, 16f)
+                .uv(Direction.NORTH, 0f, 0f, 16f, 16f)
+                .uv(Direction.SOUTH, 0f, 0f, 16f, 16f)
+                .uv(Direction.WEST,  0f, 0f, 16f, 16f)
+                .uv(Direction.EAST,  0f, 0f, 16f, 16f)
                 .register();
 
         new FakeBlockBuilder()
@@ -122,5 +131,21 @@ public class FakeBlockDefinitions {
                 .modelType(BlockTextureData.ModelType.CUBE_ALL)
                 .texture("all", "block/andesite")
                 .register();
+
+        new FakeBlockBuilder()
+                .name("fake_stone_bricks")
+                .base(Blocks.STONE_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/stone_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_bedrock")
+                .base(Blocks.BEDROCK)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/bedrock")
+                .register();
+
+
     }
 }

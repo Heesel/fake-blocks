@@ -3,12 +3,15 @@ package dev.hesselp.fakeblocks.datagen;
 import dev.hesselp.fakeblocks.FakeBlocks;
 import dev.hesselp.fakeblocks.block.FBBlockRegisterer;
 import dev.hesselp.fakeblocks.block.BlockTextureData;
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+
+import java.util.Arrays;
 
 public class FBBlockStateProvider extends BlockStateProvider {
     public FBBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -30,6 +33,7 @@ public class FBBlockStateProvider extends BlockStateProvider {
                             .texture("south", resourceLocation(textureData.getTextures().get("south")))
                             .texture("west", resourceLocation(textureData.getTextures().get("west")))
                             .texture("east", resourceLocation(textureData.getTextures().get("east")));
+
                     String particlePath = textureData.getTextures().getOrDefault("particle", textureData.getTextures().get("all"));
                     if (particlePath != null) {
                         model.texture("particle", resourceLocation(particlePath));
@@ -42,7 +46,26 @@ public class FBBlockStateProvider extends BlockStateProvider {
                                 if(textureData.getTintedFaces().containsKey(dir)) {
                                     faceBuilder.tintindex(textureData.getTintedFaces().get(dir));
                                 }
+
+                                float[] uv = textureData.getFaceUvs().get(dir);
+//                                System.out.println(Arrays.toString(uv));
+//                                if (uv.length > 0) {
+                                    faceBuilder.uvs(uv[0], uv[1], uv[2], uv[3]);
+                                //}
+
+                                faceBuilder.cullface(dir);
                             });
+
+                    String overlayPath = textureData.getTextures().get("overlay");
+                    if (overlayPath != null) {
+                        model.texture("overlay", resourceLocation(overlayPath));
+                    }
+
+                    String sidePath = textureData.getTextures().get("side");
+                    if (overlayPath != null) {
+                        model.texture("side", resourceLocation(sidePath));
+                    }
+
 
                     simpleBlockWithItem(block.get(), model);
                     break;

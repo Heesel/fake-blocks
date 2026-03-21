@@ -1,5 +1,6 @@
-// 1.21.1	2025-12-21T16:53:04.5472034	Block States: fakeblocks
+// 1.21.1	2025-12-22T18:51:35.2288872	Block States: fakeblocks
 6df9d92c95be9511dd12ec86df4102b84e235630 assets/fakeblocks/blockstates/fake_andesite.json
+9a4f700a248b62efbbee260f9f9960232b7c5958 assets/fakeblocks/blockstates/fake_bedrock.json
 4ec3228f7bc96e22a68d304ff6e5e49c8fcebe42 assets/fakeblocks/blockstates/fake_cobblestone.json
 2b83dc13b47d1cb2aa1199458c08125669d92f3c assets/fakeblocks/blockstates/fake_diamond_block.json
 21143258cf087b2e7c78b3441062ba116d973172 assets/fakeblocks/blockstates/fake_diorite.json
@@ -15,7 +16,9 @@ a689180fc6f6b3b16ae7d69b6f34eacf029cbc67 assets/fakeblocks/blockstates/fake_neth
 9762973a8764baed4444dbc4bdf7d20d1214585c assets/fakeblocks/blockstates/fake_obsidian.json
 6129fa6276a5da22cca04eafd72f5977d7c02911 assets/fakeblocks/blockstates/fake_sand.json
 0e91605f067cdbf2d9dcdffcd8bc8313af705d82 assets/fakeblocks/blockstates/fake_stone.json
+18cba5bc09edf1bda7685830113a1af58847755a assets/fakeblocks/blockstates/fake_stone_bricks.json
 52651ca1218be870d53258d8a9475bf2fb7cc15e assets/fakeblocks/models/block/fake_andesite.json
+6fb36e99202827b44aaab9ec6bef5ad2c09e1179 assets/fakeblocks/models/block/fake_bedrock.json
 3134fd1ef92fe42a97cbe4276ab422fad8ef5a46 assets/fakeblocks/models/block/fake_cobblestone.json
 a57e1c7fed9fb3e0b3005935677a26b23250cbdb assets/fakeblocks/models/block/fake_diamond_block.json
 c485776be9657f946e4cbdcbc3741bbdbdd4e0aa assets/fakeblocks/models/block/fake_diorite.json
@@ -23,7 +26,7 @@ c485776be9657f946e4cbdcbc3741bbdbdd4e0aa assets/fakeblocks/models/block/fake_dio
 f1feb87a43bb8802c08baa69b64adb49a4b76a35 assets/fakeblocks/models/block/fake_emerald_block.json
 0a6fd877bf743adfa0820a64fcaeedaaac2d7b49 assets/fakeblocks/models/block/fake_gold_block.json
 aa5e879d2fef60595262e399bd437c42b8a16497 assets/fakeblocks/models/block/fake_granite.json
-4cd15be44d856ceb9d59ee17688b81b7c8e4f9a5 assets/fakeblocks/models/block/fake_grass_block.json
+4f3a3045b13ffac88ba42c459244a6633db06287 assets/fakeblocks/models/block/fake_grass_block.json
 b0f8f7e9f1437d358a01cf7749656ee441aed269 assets/fakeblocks/models/block/fake_gravel.json
 a7a1c26a7c6b0979efcf548430b04d9fca654080 assets/fakeblocks/models/block/fake_iron_block.json
 ec46797b60c39bde3b01549f3de6c0443db7ef18 assets/fakeblocks/models/block/fake_netherite_block.json
@@ -31,7 +34,9 @@ ec46797b60c39bde3b01549f3de6c0443db7ef18 assets/fakeblocks/models/block/fake_net
 660daf5bf192ef044d4bf4ecc73648550a522481 assets/fakeblocks/models/block/fake_obsidian.json
 92c4f9d915a02eede0511dfa59ed4b3aca3fa58f assets/fakeblocks/models/block/fake_sand.json
 bd721385e8bb8bf981c7a5e7a4d54ecf81cbcfc4 assets/fakeblocks/models/block/fake_stone.json
+7b7f3d22f597659ed75869e9962d77c60af881b8 assets/fakeblocks/models/block/fake_stone_bricks.json
 10ef11bc437d87c842ee353205a5d6f7ca1f774d assets/fakeblocks/models/item/fake_andesite.json
+8df81bbdfebbded1c7c104c6f32bc8261f5399c8 assets/fakeblocks/models/item/fake_bedrock.json
 c157323758ae98cc2d08d716cd84d1d414ed455c assets/fakeblocks/models/item/fake_cobblestone.json
 ea5b469d3953ec2a6db63569e903fa9f50d9312c assets/fakeblocks/models/item/fake_diamond_block.json
 0b5ca9cb9a625f4c21193fa77640b1174d1048be assets/fakeblocks/models/item/fake_diorite.json
@@ -47,3 +52,4 @@ ef5ac6e2e9cbdcc080d1449b223841e07e5d9ac0 assets/fakeblocks/models/item/fake_neth
 45639478445f77dc0bb87e1d2e8394ad93dc2a27 assets/fakeblocks/models/item/fake_obsidian.json
 504b1d5d5af8485f88ebb11c582487757460f717 assets/fakeblocks/models/item/fake_sand.json
 62aa0d7f94d326be1b40c4fa5e1a4818bf12f7ad assets/fakeblocks/models/item/fake_stone.json
+e0149313a483bbb5daa20298dacf9637bb343633 assets/fakeblocks/models/item/fake_stone_bricks.json
