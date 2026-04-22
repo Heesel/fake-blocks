@@ -3,10 +3,13 @@ package dev.hesselp.fakeblocks.datagen;
 import dev.hesselp.fakeblocks.FakeBlocks;
 import dev.hesselp.fakeblocks.block.FBBlockRegisterer;
 import dev.hesselp.fakeblocks.block.BlockTextureData;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -73,32 +76,33 @@ public class FBBlockStateProvider extends BlockStateProvider {
                     }
 
                     String sidePath = textureData.getTextures().get("side");
-                    if (overlayPath != null) {
+                    if (sidePath != null) {
                         model.texture("side", resourceLocation(sidePath));
                     }
 
 
-                    simpleBlockWithItem(block.get(), model);
+                    waterloggedBlockWithItem(block.get(), model);
                     break;
                 case CUBE_ALL:
-                    simpleBlockWithItem(block.get(), models().cubeAll(name, resourceLocation(textureData.getTextures().get("all"))));
+                    waterloggedBlockWithItem(block.get(), models().cubeAll(name, resourceLocation(textureData.getTextures().get("all"))));
                     break;
                 case CUBE_BOTTOM_TOP:
-                    simpleBlockWithItem(block.get(), models().cubeBottomTop(name,
-                            ResourceLocation.fromNamespaceAndPath("minecraft",textureData.getTextures().get("bottom")),
-                            ResourceLocation.fromNamespaceAndPath("minecraft",textureData.getTextures().get("top")),
-                            ResourceLocation.fromNamespaceAndPath("minecraft",textureData.getTextures().get("side"))));
+                    waterloggedBlockWithItem(block.get(), models().cubeBottomTop(name,
+                            // NeoForge expects (side, bottom, top) for cubeBottomTop.
+                            resourceLocation(textureData.getTextures().get("side")),
+                            resourceLocation(textureData.getTextures().get("bottom")),
+                            resourceLocation(textureData.getTextures().get("top"))));
                     break;
                 case CUBE_COLUMN:
-                    simpleBlockWithItem(block.get(), models().cubeColumn(name, resourceLocation(textureData.getTextures().get("side")), resourceLocation(textureData.getTextures().get("end"))));
+                    waterloggedBlockWithItem(block.get(), models().cubeColumn(name, resourceLocation(textureData.getTextures().get("side")), resourceLocation(textureData.getTextures().get("end"))));
                     break;
 
                 case CUBE_TOP:
-                    simpleBlockWithItem(block.get(), models().cubeTop(name, resourceLocation(textureData.getTextures().get("top")), resourceLocation(textureData.getTextures().get("side"))));
+                    waterloggedBlockWithItem(block.get(), models().cubeTop(name, resourceLocation(textureData.getTextures().get("top")), resourceLocation(textureData.getTextures().get("side"))));
                     break;
                 case CUBE_COLUMN_HORIZONTAL:
 
-                    simpleBlockWithItem(block.get(), models().cubeColumnHorizontal(name, resourceLocation(textureData.getTextures().get("side")), resourceLocation(textureData.getTextures().get("end"))));
+                    waterloggedBlockWithItem(block.get(), models().cubeColumnHorizontal(name, resourceLocation(textureData.getTextures().get("side")), resourceLocation(textureData.getTextures().get("end"))));
                     break;
 
                 default:
@@ -109,5 +113,16 @@ public class FBBlockStateProvider extends BlockStateProvider {
 
     private ResourceLocation resourceLocation (String path) {
         return ResourceLocation.fromNamespaceAndPath("minecraft", path);
+    }
+
+    private void waterloggedBlockWithItem(Block block, BlockModelBuilder model) {
+        getVariantBuilder(block).forAllStates(state -> {
+            // Waterlogged doesn't affect model, just use the same model for all states
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
+        itemModels().withExistingParent(
+                BuiltInRegistries.BLOCK.getKey(block).getPath(),
+                modLoc("block/" + BuiltInRegistries.BLOCK.getKey(block).getPath())
+        );
     }
 }

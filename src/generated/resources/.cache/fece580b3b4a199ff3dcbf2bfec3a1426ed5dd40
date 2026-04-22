@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-18T15:34:40.9180329	Item Models: fakeblocks
+// 1.21.1	2026-04-22T20:14:50.3773679	Item Models: fakeblocks
 4bb763f29e2b5706070d9115e8d7a8968819e157 assets/fakeblocks/models/item/fake_acacia_planks.json
 5340714506b779e9d2907db836db2507e3e74312 assets/fakeblocks/models/item/fake_ancient_debris.json
 6764e2e3b5bb5c516a67c459bf635062a6e2f125 assets/fakeblocks/models/item/fake_andesite.json
@@ -120,6 +120,7 @@ fbf1836e43f3bb6f32378132c801a602c04ae9ea assets/fakeblocks/models/item/fake_spru
 fb63fdeef603a7edf02010fc963c89e2d41931b6 assets/fakeblocks/models/item/fake_stone.json
 2694c7c92ca73436fea4eb10695e8ad12225d939 assets/fakeblocks/models/item/fake_stone_bricks.json
 be673c1511f342cb18bf53b31f9b94bc0978ce33 assets/fakeblocks/models/item/fake_terracotta.json
+1789a12e5e0068329dcc399cfead00af98d2201b assets/fakeblocks/models/item/fake_tnt.json
 1f5d5a965ab0db7aa6ac3214eb403eac421af77c assets/fakeblocks/models/item/fake_tuff.json
 97f611debb4fa3cf3b19764a2724ffc6c6e71bde assets/fakeblocks/models/item/fake_tuff_bricks.json
 87865e86d7a80e6a069dfac08fcd526422e573b8 assets/fakeblocks/models/item/fake_warped_planks.json

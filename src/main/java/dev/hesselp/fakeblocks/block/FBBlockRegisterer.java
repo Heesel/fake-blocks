@@ -10,7 +10,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 import org.apache.commons.lang3.tuple.Triple;
@@ -18,11 +19,12 @@ import org.apache.commons.lang3.tuple.Triple;
 public class FBBlockRegisterer {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(FakeBlocks.MODID);
-    public static final Map<String, Triple<DeferredBlock<Block>, BlockTextureData, Block>> FAKE_BLOCKS = new HashMap<>();
+    public static final Map<String, Triple<DeferredBlock<Block>, BlockTextureData, Block>> FAKE_BLOCKS =
+            Collections.synchronizedMap(new LinkedHashMap<>());
 
     public static void registerFakeBlock(String name, Block baseBlock, BlockTextureData textureData) {
         DeferredBlock<Block> fakeBlock = registerBlock(name, () ->
-                        new Block(BlockBehaviour.Properties.ofFullCopy(baseBlock).noCollission()));
+                        new FakeBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).noCollission()));
         FAKE_BLOCKS.put(name, Triple.of(fakeBlock, textureData, baseBlock));
     }
 

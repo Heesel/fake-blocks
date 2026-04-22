@@ -13,11 +13,16 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
+
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
 import java.util.concurrent.CompletableFuture;
 
 public class FBRecipeProvider extends RecipeProvider {
+    private static final Logger LOGGER = LogUtils.getLogger();
     public FBRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider);
     }
@@ -33,6 +38,11 @@ public class FBRecipeProvider extends RecipeProvider {
             ResourceLocation baseId = ResourceLocation.fromNamespaceAndPath("minecraft", baseName);
             Block baseBlock = BuiltInRegistries.BLOCK.get(baseId);
 
+            if (baseBlock == Blocks.AIR) {
+                LOGGER.warn("FakeBlocks: Could not find base block '{}' for recipe of '{}', skipping.", baseName, fakeName);
+                return;
+            }
+            
             ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, fakeItem, 1)
                     .requires(baseBlock) // base block
                     .requires(FBItemRegisterer.NO_COLLISION_DUST.get()) // dust

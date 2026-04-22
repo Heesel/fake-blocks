@@ -950,6 +950,15 @@ public class FakeBlockDefinitions {
                 .texture("all", "block/red_sandstone_top")
                 .register();
 
+        new FakeBlockBuilder()
+                .name("fake_tnt")
+                .base(Blocks.TNT)
+                .modelType(BlockTextureData.ModelType.CUBE_BOTTOM_TOP)
+                .texture("bottom", "block/tnt_bottom")
+                .texture("side", "block/tnt_side")
+                .texture("top", "block/tnt_top")
+                .register();
+
 
 
     }

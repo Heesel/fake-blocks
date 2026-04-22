@@ -18,8 +18,10 @@ public class FBClient {
             Block fake = triple.getLeft().get();
             Block base = triple.getMiddle().getBaseBlock();
 
-            event.register((state, level, pos, tintIndex) ->
-                    event.getBlockColors().getColor(base.defaultBlockState(), level, pos, tintIndex), fake);
+            event.register((state, level, pos, tintIndex) -> {
+                if (level == null || pos == null) return -1;
+                return event.getBlockColors().getColor(base.defaultBlockState(), level, pos, tintIndex);
+            }, fake);
         });
     }
 
@@ -31,9 +33,10 @@ public class FBClient {
             Block base = triple.getMiddle().getBaseBlock();
 
             // Delegate to ItemColors using the base item's default stack
-            event.register((stack, tintIndex) ->
-                            event.getItemColors().getColor(base.asItem().getDefaultInstance(), tintIndex),
-                    fake.asItem());
+            event.register((stack, tintIndex) -> {
+                if (stack.isEmpty()) return -1;
+                return event.getItemColors().getColor(base.asItem().getDefaultInstance(), tintIndex);
+            }, fake.asItem());
         });
     }
 }

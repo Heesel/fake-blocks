@@ -1,6 +1,9 @@
 {
   "variants": {
-    "": {
+    "waterlogged=false": {
+      "model": "fakeblocks:block/fake_dirt"
+    },
+    "waterlogged=true": {
       "model": "fakeblocks:block/fake_dirt"
     }
   }
