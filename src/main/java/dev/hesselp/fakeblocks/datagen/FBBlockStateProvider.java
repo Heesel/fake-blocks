@@ -3,15 +3,12 @@ package dev.hesselp.fakeblocks.datagen;
 import dev.hesselp.fakeblocks.FakeBlocks;
 import dev.hesselp.fakeblocks.block.FBBlockRegisterer;
 import dev.hesselp.fakeblocks.block.BlockTextureData;
-import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-
-import java.util.Arrays;
 
 public class FBBlockStateProvider extends BlockStateProvider {
     public FBBlockStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -20,44 +17,58 @@ public class FBBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        FBBlockRegisterer.FAKE_BLOCKS.forEach((name, pair) -> {
-            DeferredBlock<?> block = pair.getLeft();
-            BlockTextureData textureData = pair.getRight();
+        FBBlockRegisterer.FAKE_BLOCKS.forEach((name, triple) -> {
+            DeferredBlock<?> block = triple.getLeft();
+            BlockTextureData textureData = triple.getMiddle();
 
             switch(textureData.getModelType()) {
                 case CUBE:
-                    BlockModelBuilder model = models().withExistingParent(name, "block/cube")
-                            .texture("down", resourceLocation(textureData.getTextures().get("down")))
-                            .texture("up", resourceLocation(textureData.getTextures().get("up")))
-                            .texture("north", resourceLocation(textureData.getTextures().get("north")))
-                            .texture("south", resourceLocation(textureData.getTextures().get("south")))
-                            .texture("west", resourceLocation(textureData.getTextures().get("west")))
-                            .texture("east", resourceLocation(textureData.getTextures().get("east")));
+                    BlockModelBuilder model = models().withExistingParent(name, "block/block")
+                            .renderType("minecraft:cutout_mipped");
+
+                    textureData.getTextures().forEach((key, path) -> {
+                        model.texture(key, resourceLocation(path));
+                    });
 
                     String particlePath = textureData.getTextures().getOrDefault("particle", textureData.getTextures().get("all"));
                     if (particlePath != null) {
                         model.texture("particle", resourceLocation(particlePath));
                     }
-                    model.element().from(0,0,0).to(16,16,16)
-                            .allFaces((dir, faceBuilder) -> {
-                                String textureKey = dir.getName(); // "up", "north", etc.
-                                faceBuilder.texture("#" + textureKey);
 
-                                if(textureData.getTintedFaces().containsKey(dir)) {
-                                    faceBuilder.tintindex(textureData.getTintedFaces().get(dir));
-                                }
+                    var baseElement = model.element().from(0, 0, 0).to(16, 16, 16);
 
-                                float[] uv = textureData.getFaceUvs().get(dir);
-//                                System.out.println(Arrays.toString(uv));
-//                                if (uv.length > 0) {
-                                    faceBuilder.uvs(uv[0], uv[1], uv[2], uv[3]);
-                                //}
+                    baseElement.allFaces((dir, faceBuilder) -> {
+                        String textureKey = dir.getName(); // "up", "north", etc.
+                        faceBuilder.texture("#" + textureKey);
 
-                                faceBuilder.cullface(dir);
-                            });
+                        if(textureData.getTintedFaces().containsKey(dir)) {
+                            faceBuilder.tintindex(textureData.getTintedFaces().get(dir));
+                        }
+
+                        if (textureData.getFaceUvs().containsKey(dir)) {
+                            float[] uvs = textureData.getFaceUvs().get(dir);
+                            faceBuilder.uvs(uvs[0], uvs[1], uvs[2], uvs[3]);
+                        }
+
+                        faceBuilder.cullface(dir);
+                    });
 
                     String overlayPath = textureData.getTextures().get("overlay");
                     if (overlayPath != null) {
+                        var overlayElement = model.element().from(0, 0, 0).to(16, 16, 16);
+                        for (net.minecraft.core.Direction dir : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+                            var face = overlayElement.face(dir)
+                                    .texture("#overlay")
+                                    .cullface(dir)
+                                    .tintindex(0); // Biome tint
+
+                            // Align overlay UVs with the side UVs
+                            if (textureData.getFaceUvs().containsKey(dir)) {
+                                float[] uvs = textureData.getFaceUvs().get(dir);
+                                face.uvs(uvs[0], uvs[1], uvs[2], uvs[3]);
+                            }
+                        }
+
                         model.texture("overlay", resourceLocation(overlayPath));
                     }
 

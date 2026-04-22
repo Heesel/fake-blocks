@@ -13,18 +13,19 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 
 public class FBBlockRegisterer {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(FakeBlocks.MODID);
-    public static final Map<String, Pair<DeferredBlock<Block>, BlockTextureData>> FAKE_BLOCKS = new HashMap<>();
+    public static final Map<String, Triple<DeferredBlock<Block>, BlockTextureData, Block>> FAKE_BLOCKS = new HashMap<>();
 
     public static void registerFakeBlock(String name, Block baseBlock, BlockTextureData textureData) {
         DeferredBlock<Block> fakeBlock = registerBlock(name, () ->
-                new Block(BlockBehaviour.Properties.ofFullCopy(baseBlock).noCollission()));
-        FAKE_BLOCKS.put(name, Pair.of(fakeBlock, textureData));
+                        new Block(BlockBehaviour.Properties.ofFullCopy(baseBlock).noCollission()));
+        FAKE_BLOCKS.put(name, Triple.of(fakeBlock, textureData, baseBlock));
     }
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -22,16 +23,15 @@ public class FBRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output) {
-        FBBlockRegisterer.FAKE_BLOCKS.forEach((fakeName, pair) -> {
-            ItemLike fakeItem = pair.getLeft().get();
+    protected void buildRecipes(@NotNull RecipeOutput output) {
+        FBBlockRegisterer.FAKE_BLOCKS.forEach((fakeName, triple) -> {
+            ItemLike fakeItem = triple.getLeft().get();
 
-            BlockTextureData textureData = pair.getRight();
+            BlockTextureData textureData = triple.getMiddle();
             String baseName = textureData.getBaseName();
 
             ResourceLocation baseId = ResourceLocation.fromNamespaceAndPath("minecraft", baseName);
             Block baseBlock = BuiltInRegistries.BLOCK.get(baseId);
-            if (baseBlock == null) return;
 
             ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, fakeItem, 1)
                     .requires(baseBlock) // base block
