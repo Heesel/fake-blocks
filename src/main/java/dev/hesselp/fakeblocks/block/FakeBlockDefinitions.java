@@ -959,7 +959,283 @@ public class FakeBlockDefinitions {
                 .texture("top", "block/tnt_top")
                 .register();
 
+        new FakeBlockBuilder()
+                .name("fake_quartz_block")
+                .base(Blocks.QUARTZ_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_BOTTOM_TOP)
+                .texture("bottom", "block/quartz_block_bottom")
+                .texture("side", "block/quartz_block_side")
+                .texture("top", "block/quartz_block_top")
+                .register();
 
+                new FakeBlockBuilder()
+                .name("fake_smooth_quartz")
+                .base(Blocks.SMOOTH_QUARTZ)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/quartz_block_bottom")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_quartz_pillar")
+                .base(Blocks.QUARTZ_PILLAR)
+                .modelType(BlockTextureData.ModelType.CUBE_COLUMN)
+                .texture("side", "block/quartz_pillar")
+                .texture("end", "block/quartz_pillar_top")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_chiseled_quartz_block")
+                .base(Blocks.CHISELED_QUARTZ_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_COLUMN)
+                .texture("side", "block/chiseled_quartz_block")
+                .texture("end", "block/chiseled_quartz_block_top")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_purpur_block")
+                .base(Blocks.PURPUR_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/purpur_block")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_purpur_pillar")
+                .base(Blocks.PURPUR_PILLAR)
+                .modelType(BlockTextureData.ModelType.CUBE_COLUMN)
+                .texture("side", "block/purpur_pillar")
+                .texture("end", "block/purpur_pillar_top")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_prismarine")
+                .base(Blocks.PRISMARINE)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/prismarine")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_prismarine_bricks")
+                .base(Blocks.PRISMARINE_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/prismarine_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_dark_prismarine")
+                .base(Blocks.DARK_PRISMARINE)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/dark_prismarine")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_sea_lantern")
+                .base(Blocks.SEA_LANTERN)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/sea_lantern")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_glowstone")
+                .base(Blocks.GLOWSTONE)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/glowstone")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_shroomlight")
+                .base(Blocks.SHROOMLIGHT)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/shroomlight")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_lapis_block")
+                .base(Blocks.LAPIS_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/lapis_block")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_amethyst_block")
+                .base(Blocks.AMETHYST_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/amethyst_block")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_calcite")
+                .base(Blocks.CALCITE)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/calcite")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_basalt")
+                .base(Blocks.BASALT)
+                .modelType(BlockTextureData.ModelType.CUBE_COLUMN)
+                .texture("side", "block/basalt_side")
+                .texture("end", "block/basalt_top")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_polished_basalt")
+                .base(Blocks.POLISHED_BASALT)
+                .modelType(BlockTextureData.ModelType.CUBE_COLUMN)
+                .texture("side", "block/polished_basalt_side")
+                .texture("end", "block/polished_basalt_top")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_smooth_basalt")
+                .base(Blocks.SMOOTH_BASALT)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/smooth_basalt")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_bone_block")
+                .base(Blocks.BONE_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_COLUMN)
+                .texture("side", "block/bone_block_side")
+                .texture("end", "block/bone_block_top")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_hay_block")
+                .base(Blocks.HAY_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_COLUMN)
+                .texture("side", "block/hay_block_side")
+                .texture("end", "block/hay_block_top")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_honeycomb_block")
+                .base(Blocks.HONEYCOMB_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/honeycomb_block")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_nether_wart_block")
+                .base(Blocks.NETHER_WART_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/nether_wart_block")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_warped_wart_block")
+                .base(Blocks.WARPED_WART_BLOCK)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/warped_wart_block")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_mud")
+                .base(Blocks.MUD)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/mud")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_packed_mud")
+                .base(Blocks.PACKED_MUD)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/packed_mud")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_mud_bricks")
+                .base(Blocks.MUD_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/mud_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_chiseled_stone_bricks")
+                .base(Blocks.CHISELED_STONE_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/chiseled_stone_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_cracked_stone_bricks")
+                .base(Blocks.CRACKED_STONE_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/cracked_stone_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_red_nether_bricks")
+                .base(Blocks.RED_NETHER_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/red_nether_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_chiseled_nether_bricks")
+                .base(Blocks.CHISELED_NETHER_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/chiseled_nether_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_cracked_nether_bricks")
+                .base(Blocks.CRACKED_NETHER_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/cracked_nether_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_polished_blackstone")
+                .base(Blocks.POLISHED_BLACKSTONE)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/polished_blackstone")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_gilded_blackstone")
+                .base(Blocks.GILDED_BLACKSTONE)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/gilded_blackstone")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_chiseled_polished_blackstone")
+                .base(Blocks.CHISELED_POLISHED_BLACKSTONE)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/chiseled_polished_blackstone")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_polished_blackstone_bricks")
+                .base(Blocks.POLISHED_BLACKSTONE_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/polished_blackstone_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_cracked_polished_blackstone_bricks")
+                .base(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/cracked_polished_blackstone_bricks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_bookshelf")
+                .base(Blocks.BOOKSHELF)
+                .modelType(BlockTextureData.ModelType.CUBE_BOTTOM_TOP)
+                .texture("side", "block/bookshelf")
+                .texture("top", "block/oak_planks")
+                .texture("bottom", "block/oak_planks")
+                .register();
+
+        new FakeBlockBuilder()
+                .name("fake_glass")
+                .base(Blocks.GLASS)
+                .modelType(BlockTextureData.ModelType.CUBE_ALL)
+                .texture("all", "block/glass")
+                .renderType(BlockTextureData.RenderType.CUTOUT)
+                .register();
 
     }
 }

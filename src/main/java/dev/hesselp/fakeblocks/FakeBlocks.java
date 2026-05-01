@@ -1,10 +1,9 @@
 package dev.hesselp.fakeblocks;
 
-import com.mojang.logging.LogUtils;
+//import com.mojang.logging.LogUtils;
 import dev.hesselp.fakeblocks.block.FBBlockRegisterer;
 import dev.hesselp.fakeblocks.item.FakeBlocksCreativeModeTabs;
 import dev.hesselp.fakeblocks.item.FBItemRegisterer;
-import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -18,7 +17,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
-import org.slf4j.Logger;
+//import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(FakeBlocks.MODID)
@@ -26,7 +25,7 @@ public class FakeBlocks {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "fakeblocks";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    //private static final Logger LOGGER = LogUtils.getLogger();
 
     public FakeBlocks(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
@@ -43,14 +42,12 @@ public class FakeBlocks {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(FBBlockRegisterer::registerDispenserBehaviors);
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 

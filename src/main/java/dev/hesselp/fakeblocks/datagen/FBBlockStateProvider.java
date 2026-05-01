@@ -84,7 +84,18 @@ public class FBBlockStateProvider extends BlockStateProvider {
                     waterloggedBlockWithItem(block.get(), model);
                     break;
                 case CUBE_ALL:
-                    waterloggedBlockWithItem(block.get(), models().cubeAll(name, resourceLocation(textureData.getTextures().get("all"))));
+                    String renderType = switch (textureData.getRenderType()) {
+                        case CUTOUT -> "minecraft:cutout";
+                        case CUTOUT_MIPPED -> "minecraft:cutout_mipped";
+                        case TRANSLUCENT -> "minecraft:translucent";
+                        default -> "minecraft:solid";
+                    };
+
+                    BlockModelBuilder cubeAllModel = models()
+                            .cubeAll(name, resourceLocation(textureData.getTextures().get("all")))
+                            .renderType(renderType);
+
+                    waterloggedBlockWithItem(block.get(), cubeAllModel);
                     break;
                 case CUBE_BOTTOM_TOP:
                     waterloggedBlockWithItem(block.get(), models().cubeBottomTop(name,

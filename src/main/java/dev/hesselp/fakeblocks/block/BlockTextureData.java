@@ -3,7 +3,6 @@ package dev.hesselp.fakeblocks.block;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class BlockTextureData {
@@ -13,15 +12,18 @@ public class BlockTextureData {
     private final Block baseBlock;
     private final Map<Direction, Integer> tintedFaces; // new field
     private final Map<Direction, float[]> faceUvs; // new field
+    private final RenderType renderType;
 
 
-    public BlockTextureData(String baseName, ModelType modelType, Map<String, String> textures, Block baseBlock, Map<Direction, Integer> tintedFaces, Map<Direction, float[]> faceUvs) {
+    public BlockTextureData(String baseName, ModelType modelType, Map<String, String> textures, Block baseBlock, Map<Direction, Integer> tintedFaces, Map<Direction, float[]> faceUvs, RenderType renderType) {
         this.baseName = baseName;
         this.modelType = modelType;
         this.textures = textures;
         this.baseBlock = baseBlock;
         this.tintedFaces = tintedFaces;
         this.faceUvs = faceUvs;
+        this.renderType = renderType;
+
 
     }
 
@@ -32,6 +34,8 @@ public class BlockTextureData {
     public Block getBaseBlock() { return baseBlock; }
     public Map<Direction, Integer> getTintedFaces() { return tintedFaces; }
     public Map<Direction, float[]> getFaceUvs() { return faceUvs; }
+    public RenderType getRenderType() { return renderType; }
+
 
 
     public enum ModelType {
@@ -41,6 +45,13 @@ public class BlockTextureData {
         CUBE_COLUMN,
         CUBE_TOP,
         CUBE_COLUMN_HORIZONTAL
+    }
+
+    public enum RenderType {
+        SOLID,
+        CUTOUT,
+        CUTOUT_MIPPED,
+        TRANSLUCENT
     }
 }
 

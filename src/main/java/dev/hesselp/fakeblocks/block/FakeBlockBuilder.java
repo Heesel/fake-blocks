@@ -12,8 +12,12 @@ public class FakeBlockBuilder {
     private final Map<String, String> textures = new HashMap<>();
     private final Map<Direction, Integer> faceTints = new HashMap<>();
     private final Map<Direction, float[]> faceUvs = new HashMap<>(); // [u1, v1, u2, v2]
+    private BlockTextureData.RenderType renderType = BlockTextureData.RenderType.SOLID; // default
 
-
+    public FakeBlockBuilder renderType(BlockTextureData.RenderType renderType) {
+        this.renderType = renderType;
+        return this;
+    }
 
     public FakeBlockBuilder name(String name) {
         this.name = name;
@@ -67,7 +71,8 @@ public class FakeBlockBuilder {
                         textures,
                         baseBlock,
                         faceTints,
-                        faceUvs
+                        faceUvs,
+                        renderType
                 )
         );
     }
